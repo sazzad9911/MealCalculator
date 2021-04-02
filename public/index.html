@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAFA Food</title>
+    <link rel="icon" href="image/logo.png" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="box1" id="flash-area">
+        <img src="image/team.png" alt="team image" style="width: 45vw; height: 45vw;">
+    </div>
+    <div class="box1" id="login-area">
+        <div class="b2">
+            <h5>For security reason you have to login again.</h4>
+                <h3>Log In Here</h3>
+                <input type="email" id="email" placeholder="Email" onkeydown="jump(event,'password','email')">
+                <input type="password" id="password" placeholder="Password" onkeydown="jump(event,'submit','password')">
+                <input type="submit" style="height: 25px; margin-top: 25px;" value="Login" id="submit">
+                <input type="submit" style="height: 25px; margin-top: 25px;" value="SignUp" onclick="gotoSignUp()">
+                <br>
+                <br>
+                <a href="meal-calculator.apk" style="color: white;">Download Mobile App</a>
+        </div>
+    </div>
+    <div class="box1" id="product-area">
+        <div class="box2" style="padding: 0px 10px; color: white;">
+            <p style="color: white; font-size: 18px; font-weight: bold; margin: 10px 10px; border: 1px solid white; text-align: center;">All Items</p>
+            <div class="ct" style="border: none;">
+                <p id="pd1"></p>
+            </div>
+        </div>
+        <div class="log" onclick="portal()">
+            <div class="pr">
+                <i class="fas fa-sign-in-alt fa-2x"></i>
+                <p>Log In</p>
+            </div>
+            <div class="pr" id="ss">
+                <div class="img1">
+                    <img src="image/team.png">
+                </div>
+                <h5 style="color: rgb(0, 225, 255); font-weight: 300; margin: 2px 2px; font-size: 15px; max-width: 80px; max-height: 15px; overflow: hidden;text-overflow: ellipsis;white-space: nowrap; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Sazzad Hossain Lemon</h5>
+            </div>
+        </div>
+
+        <style>
+            .ss1 {
+                width: fit-content;
+                height: fit-content;
+                border-radius: 50%;
+                box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.514);
+                position: absolute;
+                bottom: 12px;
+                left: 10px;
+                color: rgba(164, 138, 226, 0.479);
+            }
+            
+            .ct {
+                width: 100%;
+                height: 96%;
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                overflow-y: scroll;
+                scroll-behavior: smooth;
+                -ms-overflow-style: none;
+                /* IE and Edge */
+                scrollbar-width: none;
+                border: none;
+            }
+            
+            .ct::-webkit-scrollbar {
+                display: none;
+            }
+            
+            .card {
+                width: 90vw;
+                height: 320px;
+                box-shadow: 3px 2px 4px rgba(0, 0, 0, 0.418);
+                margin: 8px 8px;
+                border-radius: 5px;
+                overflow: hidden;
+                background: rgba(47, 149, 245, 0.199);
+            }
+            
+            .card i:hover {
+                color: brown;
+            }
+            
+            .card img {
+                width: 100%;
+                height: 50%;
+                border-radius: 5px;
+                margin: 0;
+                opacity: .8;
+            }
+            
+            .card h4 {
+                width: 90%;
+                height: 10%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                text-overflow: ellipsis;
+                font-size: 15px;
+                font-weight: 600;
+                margin: 1% 5%;
+            }
+            
+            .font {
+                width: 80%;
+                height: 28%;
+                font-size: 15px;
+                font-weight: 100;
+                margin: 1% 5%;
+                overflow: hidden;
+                white-space: initial;
+                text-overflow: ellipsis;
+            }
+            
+            .font p {
+                margin: 0;
+            }
+            
+            .log {
+                width: 150px;
+                height: 50px;
+                border-radius: 10px;
+                background: rgba(164, 138, 226, 0.479);
+                position: absolute;
+                bottom: 5px;
+                right: 12px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            .img1 {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                box-shadow: 2px 2px 2px rgb(57, 204, 230);
+                margin: 2px 2px;
+            }
+            
+            .img1 img {
+                width: 100%;
+                height: 100%;
+            }
+            
+            .pr {
+                width: 90%;
+                height: 90%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+            }
+            
+            .log i {
+                color: whitesmoke;
+                margin: 2px 2px;
+                cursor: pointer;
+            }
+            
+            .log p {
+                font-size: 20px;
+                color: whitesmoke;
+                font-family: Arial, Helvetica, sans-serif;
+                font-weight: 900;
+            }
+            
+            @media (min-width: 500px) {
+                .card {
+                    width: 250px;
+                }
+            }
+            
+            #ss {
+                display: none;
+            }
+        </style>
+    </div>
+    <div class="box1" id="signup-area">
+        <div class="b2" style="min-height: fit-content;">
+            <h5>If you want to create new mess then go to Create Mess.</h4>
+                <h3>SignUp Here</h3>
+                <input type="text" id="name1" placeholder="Name...." onkeydown="jump(event,'email1','name1')">
+                <input type="email" id="email1" placeholder="Email..." onkeydown="jump(event,'phone1','email1')">
+                <input type="text" id="phone1" placeholder="Phone...." onkeydown="jump(event,'date1','phone1')">
+                <input type="date" id="date1" placeholder="Date of Birth" onkeydown="jump(event,'code1','phone1')">
+                <input type="number" id="code1" placeholder="Messcode...." onkeydown="jump(event,'password1','code1')">
+                <input type="password" id="password1" placeholder="New Password...." onkeydown="jump(event,'password2','password1')">
+                <input type="password" id="password2" placeholder="Confirm Password...." onkeydown="jump(event,'submit1','password2')">
+                <input type="submit" style="height: 25px; margin-top: 15px;" value="SignUp" id="submit1">
+                <input type="submit" style="height: 25px; margin-top: 15px;" value="Create Mess" onclick="gotoCreateMess()">
+                <input type="submit" style="height: 25px; margin-top: 15px; margin-bottom: 15px;" value="Back" onclick="Back1()">
+        </div>
+    </div>
+    <div class="box1" id="regester-area">
+        <div class="b2" style="min-height: fit-content;">
+            <h5>Give your mess code to signup now.</h4>
+                <h3>Create Mess</h3>
+                <input type="email" id="email" placeholder="Email" onkeydown="jump(event,'password','email')">
+                <input type="password" id="password" placeholder="Password" onkeydown="jump(event,'submit','password')">
+                <input type="password" id="password" placeholder="Password" onkeydown="jump(event,'submit','password')">
+                <input type="password" id="password" placeholder="Password" onkeydown="jump(event,'submit','password')">
+                <input type="password" id="password" placeholder="Password" onkeydown="jump(event,'submit','password')">
+                <input type="submit" style="height: 25px; margin-top: 25px;" value="Create Mess" id="submit2">
+                <input type="submit" style="height: 25px; margin-top: 25px; margin-bottom: 25px;" value="Back" onclick="Back2()">
+        </div>
+    </div>
+    <div class="box1" id="main-area">
+        <div class="box2" style="overflow:hidden " id="dashboard">
+            <div class="container">
+                <div class="c1" style="background: rgba(255, 0, 0, 0.39);">
+                    <h2 id="mealdue"></h2>
+                    <p>Meal Due</p>
+                </div>
+                <div class="c1" style="background: rgba(2, 155, 2, 0.39);">
+                    <h2 id="mealcredit"></h2>
+                    <p>Meal Credit</p>
+                </div>
+                <div class="c1" style="background: rgba(214, 5, 5, 0.39);">
+                    <h2 id="homedue"></h2>
+                    <p>Home Due</p>
+                </div>
+                <div class="c1" style="background: rgba(2, 129, 29, 0.39);">
+                    <h2 id="homecredit"></h2>
+                    <p>Home Credit</p>
+                </div>
+                <div class="c1" style="background: rgba(5, 127, 197, 0.39);">
+                    <h2 id="mealrate"></h2>
+                    <p>Meal Rate</p>
+                </div>
+                <div class="c1" style="background: rgba(31, 5, 177, 0.39);">
+                    <h2 id="totalmeal"></h2>
+                    <p>Total Meal</p>
+                </div>
+
+            </div>
+            <p style="color: white; font-weight: 500; font-size: 20px; text-align: center;" id="name"></p>
+            <hr>
+            <div class="container" style="height: max-content;">
+                <div class="c2">
+                    <button id="details-btn" onclick="MyDetails()">My Details</button>
+                    <button id="activity-btn" onclick="MyActivity()">My Activity</button>
+                    <button id="meal-btn" onclick="AddMeal()">Add Meals</button>
+                    <button id="bill-btn" onclick="AddBills()">Add Bills</button>
+                    <button id="settings-btn" onclick="Setting()">Settings</button>
+                </div>
+                <div class="c3" id="details" style="overflow-y: scroll;">
+                    <p style="color: chartreuse; font-weight: 700; font-size: 18px;" id="handcash"></p>
+                    <p style="color: darkorange; font-weight: 700; font-size: 18px;" id="mealexpenses"></p>
+                    <button id="all-meals" class="reset"><i class="fas fa-list"></i> All Meals</button>
+                    <p style="font-weight: 800; text-align: center;">Your Dues Information Are Showing Here..</p>
+                    <p id="home"></p>
+                    <p id="wifi"></p>
+                    <p id="electricity"></p>
+                    <p id="gass"></p>
+                    <p id="extra"></p>
+                    <p id="fine"></p>
+                    <p id="prev"></p>
+                    <br>
+                </div>
+                <div id="activity" class="c3">
+                    <p style="font-weight: 800; text-align: center;">Your Activities Are Showing Here..</p>
+                    <div class="bx1">
+                        <p id="after-activity"></p>
+                    </div>
+
+                </div>
+                <div class="c3" id="addmeal" style="flex-wrap: wrap; justify-content: center;">
+                    <p style="font-weight: 800; ">Meal Options</p>
+                    <button class="reset" onclick="MealFragment()"><i class="fas fa-plus"></i> Add Credit</button>
+                    <div class="bx1">
+                        <h4 id="addmeal-people" style="width: 100%;"></h4>
+                        <input type="number" class="x" placeholder="Todays Cost" id="todays-cost">
+                        <input type="date" class="x" placeholder="Select Date" id="select-date">
+                        <p>Fill next 2 blank if any guest present</p>
+                        <button class="x" onclick="addGuest()" id="button">Add Guest</button>
+                        <button class="x" style="margin-bottom: 15px;" id="add-meal-btn">Update</button>
+                    </div>
+                </div>
+                <div class="c3" id="addbill">
+                    <p style="font-weight: 800; text-align: center;">wait for something awessome!</p>
+                </div>
+                <div class="c3" id="settings">
+                    <p style="font-weight: 800; text-align: center;">Meal Calculation Settings</p>
+                    <div class="reset" onclick="reset()">
+                        <i class="fas fa-trash-restore fa-1x"> Reset</i>
+                    </div>
+                    <div style="width: 100%; height: max-content; display: flex; justify-content: center; align-items: center; margin-top: 5px;">
+                        <p style="margin-right: 10px;">Avarage</p>
+                        <label class="switch">
+                        <input type="checkbox" id="system-btn" onclick="systemBtn()">
+                        <span class="slider round"></span>
+                      </label>
+                        <p style="margin-left: 10px;">Fixed</p>
+                    </div>
+                    <div class="bx" style="overflow-y: scroll; height: 20vh;">
+
+                        <div style="width: 100%; height: max-content; display: flex; justify-content: center; align-items: center; margin-top: 5px; flex-wrap: wrap; border: 1px solid white; padding: 2px 2px;">
+                            <p style="margin-right: 10px;">Details:</p>
+                            <select id="details-select">
+                                <option id="option" value="none">None</option>
+                            </select>
+                            <button id="details-btns">View</button>
+                        </div>
+                        <div style="width: 80%; height: max-content; display: flex; justify-content: center; align-items: center; margin-top: 5px; flex-wrap: wrap; border: 1px solid white; padding: 2px 2px; margin-bottom: 10px;">
+                            <p style="margin-right: 10px;">Admin:</p>
+                            <select id="value-admin">
+                                <option id="option-admin" value="none">None</option>
+                            </select>
+                            <button id="cng-admin1">Change</button>
+                        </div>
+                        <div style="width: 80%; height: max-content; display: flex; justify-content: center; align-items: center; margin-top: 5px; flex-wrap: wrap; border: 1px solid white; padding: 2px 2px; margin-bottom: 10px;">
+                            <p style="margin-right: 10px;">Delete User Permently:</p>
+                            <select id="value-delete">
+                                <option id="option-delete" value="none">None</option>
+                            </select>
+                            <button id="cng-delete" style="background: rgba(255, 0, 0, 0.425);">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <style>
+            .reset {
+                width: 100%;
+                color: white;
+                border: 1px solid white;
+                border-radius: 8px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 28px;
+                background: rgba(0, 0, 0, 0.322);
+            }
+            
+            .reset:hover {
+                background: rgba(165, 42, 42, 0.384);
+            }
+            
+            .c1 {
+                width: 150px;
+                height: 70px;
+                opacity: .9;
+                border-radius: 5px;
+                box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.658);
+                color: white;
+                overflow: hidden;
+                margin: 5px 10px;
+            }
+            
+            .c1 p {
+                margin: 0px 0px;
+                text-align: center;
+            }
+            
+            .c1 h2 {
+                text-align: center;
+                margin-top: 10px;
+                margin-bottom: 3px;
+                margin-left: 0;
+                margin-right: 0;
+            }
+            
+            .c2 {
+                width: 30%;
+                height: fit-content;
+                display: block;
+            }
+            
+            .c2 button {
+                min-width: 90px;
+                margin-left: 10%;
+                height: 25px;
+                text-align: right;
+                background: none;
+                outline: none;
+                border: none;
+                color: white;
+                font-weight: 500;
+                font-size: 16px;
+                margin-top: 15px;
+                box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.726);
+            }
+            
+            .c3 {
+                width: 65%;
+                height: 40vh;
+                border-left: 1px solid yellow;
+                padding: 5px 5px;
+                color: white;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                scroll-behavior: smooth;
+                -ms-overflow-style: none;
+                /* IE and Edge */
+                scrollbar-width: none;
+            }
+            
+            .c3::-webkit-scrollbar {
+                display: none;
+            }
+            
+            .bx1 {
+                width: 100%;
+                height: 30vh;
+                overflow-y: scroll;
+                scroll-behavior: smooth;
+                -ms-overflow-style: none;
+                /* IE and Edge */
+                scrollbar-width: none;
+            }
+            
+            .c3 input {
+                outline: none;
+                border: none;
+                border-radius: 5px;
+                height: 20px;
+                margin-right: 5px;
+            }
+            
+            .c3 select {
+                outline: none;
+                border: none;
+                border-radius: 5px;
+                height: 20px;
+                margin-right: 5px;
+                min-width: 130px;
+            }
+            
+            .bx1::-webkit-scrollbar {
+                display: none;
+            }
+            
+            .c3 p {
+                margin: 2px 2px;
+            }
+            
+            .x {
+                width: 80%;
+                outline: none;
+                border: none;
+                border-radius: 4px;
+                margin: 5px 5px;
+                height: 22px;
+            }
+        </style>
+        <div class="box2" id="profile" style="padding: 0px 10px;">
+            <style>
+                .c {
+                    background: none;
+                    border: none;
+                    outline: none;
+                    color: white;
+                    text-align: center;
+                }
+            </style>
+            <p style="color: white; font-size: 18px; font-weight: bold; margin: 10px 10px; border: 1px solid white; text-align: center;">My profile</p>
+            <div class="bx">
+                <div class="container" style="color: white;">
+                    <img src="" class="profile" id="img-p"><input type="file" id="logo" style="width: 0; height: 0;">
+                    <input style="margin: 20px 20px; font-size: 30px; color: white; width: 100%;" id="names" type="text" class="c"></input><br>
+                    <i class="fas fa-edit" id="save-name"></i>
+                    <p>Save</p>
+                    <i class="fas fa-sign-out-alt fa-2x" style="margin-left: 10px;" onclick="logout()"></i>
+                    <p>Logout</p>
+                    <script>
+                        $("#logo").css('opacity', '0');
+
+                        $("#img-p").click(function(e) {
+                            e.preventDefault();
+                            $("#logo").trigger('click');
+                        });
+                    </script>
+                </div>
+                <div class="container" style="color: white; justify-content: center; margin: 0;">
+                    <i class="fas fa-envelope-open-text fa-2x"></i>
+                    <p class="p" id="emaill"></p>
+                </div>
+                <div class="container" style="color: white; justify-content: center; margin: 0;">
+                    <i class="fas fa-phone fa-2x"></i>
+                    <input type='text' id="phone" class="c" style="font-size: 18px; font-weight: 400; width: fit-content; height: fit-content; margin: 0; padding: 0;"></input>
+                    <i class="fas fa-edit" id="save-phone"></i>
+                    <p>Save</p>
+                </div>
+                <div class="container" style="color: white;margin: 0;">
+                    <h5>Your Mess Details</h5>
+                </div>
+                <div class="container" style="color: white; margin: 0;">
+                    <i class="far fa-address-book fa-2x"></i>
+                    <p class="p" id="mess-address"></p>
+                </div>
+                <div class="container" style="color: white; margin: 0;">
+                    <i class="fas fa-cogs fa-2x"></i>
+                    <p class="p" id="system"></p>
+                </div>
+                <div class="container" style="color: white; margin: 0;">
+                    <i class="fas fa-qrcode fa-2x"></i>
+                    <p class="p" id="code" style="margin-bottom: 20px;"></p>
+                </div>
+            </div>
+            <style>
+                .profile {
+                    border-radius: 50%;
+                    width: 130px;
+                    height: 130px;
+                    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.788);
+                }
+                
+                @media (max-width: 600px) {
+                    .profile {
+                        margin-left: 100px;
+                        margin-right: 100px;
+                    }
+                }
+                
+                .container i {
+                    margin-left: 5px;
+                    margin-right: 5px;
+                }
+                
+                .p {
+                    margin-left: 5px;
+                    margin-right: 5px;
+                    font-size: 18px;
+                    color: white;
+                    margin-top: 5px;
+                    margin-bottom: 0;
+                }
+            </style>
+        </div>
+        <div class="box2" id="event" style="padding: 0px 10px; color: white;">
+            <p style="color: white; font-size: 18px; font-weight: bold; margin: 10px 10px; border: 1px solid white; text-align: center;">All Events</p>
+            <div class="container" id="addevent">
+                <i class="fas fa-plus-circle fa-2x"></i>
+                <p>Add New Event</p>
+            </div>
+            <div class="container" style="overflow-y: scroll;">
+                <p id="event-st" style="margin: 0;"></p>
+
+            </div>
+            <style>
+                .event-box {
+                    width: 100%;
+                    height: fit-content;
+                    overflow-wrap: break-word;
+                    border: 1px solid white;
+                    margin-top: 5px;
+                    padding: 5px 5px;
+                }
+                
+                .event-box p {
+                    margin-bottom: 4px;
+                    margin-top: 7px;
+                }
+                
+                .event-box h4 {
+                    margin: 0;
+                }
+                
+                .event-box h6 {
+                    margin: 0;
+                }
+                
+                .event-box button {
+                    height: 20px;
+                    border-radius: 2px;
+                    outline: none;
+                    border: none;
+                    margin: 5px 5px;
+                }
+                
+                .event-box button:hover {
+                    background: black;
+                    color: white;
+                }
+            </style>
+        </div>
+        <div class="box2" id="item" style="padding: 0px 10px; color: white; overflow-y: hidden;">
+            <p style="color: white; font-size: 18px; font-weight: bold; margin: 10px 10px; border: 1px solid white; text-align: center;">All Items</p>
+            <div class="container" id="new-item">
+                <i class="fas fa-plus-circle fa-2x"></i>
+                <p>Add New Item</p>
+            </div>
+            <div class="ct" style="border: none; max-height: 85%;">
+                <p id="pd2"></p>
+            </div>
+            <style>
+
+            </style>
+        </div>
+        <style>
+            .ct {
+                border: 1px solid black;
+            }
+        </style>
+        <div class="b3">
+            <div class="iconbox" onclick="dashboard()" id="dash">
+                <i class="fas fa-chart-line fa-2x"></i>
+                <p>Dashboard</p>
+            </div>
+            <div class="iconbox" id="prof" onclick="profile()">
+                <i class="far fa-user-circle fa-2x"></i>
+                <p>My Profile</p>
+            </div>
+            <div class="iconbox" id="even" onclick="events()">
+                <i class="fas fa-calendar-alt fa-2x"></i>
+                <p>My Events</p>
+            </div>
+            <div class="iconbox" id="items" onclick="item()">
+                <i class="fas fa-hamburger fa-2x"></i>
+                <p>My Items</p>
+            </div>
+        </div>
+    </div>
+    <div class="lock" id="alert">
+        <div class="notify">
+            <h3 id="alert-head">Alert!</h3>
+            <p id="alert-text">Your phone is hacked.</p>
+            <button onclick="closeAlert('alert')">Ok</button>
+        </div>
+    </div>
+    <div class="lock" id="eventss">
+        <div class="notify" style="justify-content: center;">
+            <h3 style="text-align: center;">Add Event</h3>
+            <input type="text" placeholder="Event Title...." class="v1" id="addevent-title">
+            <input type="number" placeholder="Amount $" class="v1" id="addevent-amount">
+            <textarea placeholder="Event Explaination......" class="v1" id="addevent-details"></textarea>
+            <button id="save-event" style="margin: 10px 10px;">Save</button>
+            <button onclick="closeAlert('eventss')" style="margin: 10px 10px;">Close</button>
+        </div>
+        <style>
+            .v1 {
+                outline: none;
+                width: 90%;
+                min-height: 20px;
+                margin: 5px 5px;
+                border: 1px solid rgb(0, 4, 255);
+                background: none;
+                border-radius: 5px;
+            }
+        </style>
+    </div>
+    <div class="lock" id="fragment-meal">
+        <div class="notify" style="display: flex; justify-content: center; flex-wrap: wrap;">
+            <h3>Add Credit</h3>
+            <input class="x" id="credit-amount" type="number" placeholder="Amount...">
+            <select class="x" id="credit-person">
+                <option id="option-credit" value="none">None</option>
+            </select>
+            <button class="x" style="float: right;" id="save-credit">Save</button>
+            <button class="x" style="float: left;" onclick="closeAlert('fragment-meal')">Close</button>
+        </div>
+    </div>
+    <div class="lock" id="fragment-guest">
+        <div class="notify" style="display: flex; justify-content: center; flex-wrap: wrap;">
+            <h3>Add Guest</h3>
+            <input class="x" id="guest-amount" type="number" placeholder="Total Guest...">
+            <select class="x" id="guest-person">
+                <option id="option-guest" value="none">None</option>
+            </select>
+            <button class="x" style="float: right;" id="save-guest">Add</button>
+            <button class="x" style="float: left;" onclick="closeAlert('fragment-guest')">Close</button>
+        </div>
+    </div>
+    <div class="lock" id="fragment-details">
+        <div class="notify" style="display: flex; justify-content: center; flex-wrap: wrap; font-weight: 600; font-size: 15px;">
+            <h3 id="nnn" style="width: 100%; text-align: center;">User Details</h3>
+            Name:
+            <p id="dt-name"></p>
+            Birthday:
+            <p id="dt-date"></p>
+            Phone:
+            <p id="dt-phone"></p>
+            Meal Due:
+            <p id="dt-mealdue"></p>
+            Home Due:
+            <p id="dt-homedue"></p>
+            Total Meal:
+            <p id="dt-totalmeal"></p>
+            Meal Credit:
+            <p id="dt-mealcredit"></p>
+            Home Credit:
+            <p id="dt-homecredit"></p>
+            <button class="x" style="float: left;" onclick="closeAlert('fragment-details')">Close</button>
+        </div>
+    </div>
+    <div class="lock" id="fragment-allmeals">
+        <div class="notify" style="display: flex; justify-content: center; flex-wrap: wrap; font-weight: 600; font-size: 15px; height: 50vh;">
+            <h3 id="nnnn" style="width: 100%; text-align: center;">All Meals</h3>
+            <button class="x" style="float: left;" onclick="closeAlert('fragment-allmeals')">Close</button>
+            <div class="z" id="z">
+                <div style="width: 30%; margin: 2px 2px;">
+                    <p style="text-align: center;"><b>Date</b></p>
+                </div>
+                <div style="width: 30%; margin: 2px 2px;">
+                    <p style="text-align: center;"><b>Cost</b></p>
+                </div>
+                <div style="width: 30%; margin: 2px 2px;">
+                    <p style="text-align: center;"><b>Meal</b></p>
+                </div>
+            </div>
+        </div>
+        <style>
+            .z {
+                border: 1px solid black;
+                display: flex;
+                justify-content: center;
+                width: 90%;
+                height: fit-content;
+            }
+        </style>
+    </div>
+    <div class="lock" id="fragment-reset">
+        <div class="notify" style="display: flex; justify-content: center; flex-wrap: wrap; font-weight: 600; font-size: 15px; height: fit-content;">
+            <h3 id="nnnn" style="width: 100%; text-align: center;">Do you want to restart meal?</h3>
+            <button class="x" id="reset">Ok</button>
+            <button class="x" style="float: left;" onclick="closeAlert('fragment-reset')">Close</button>
+        </div>
+    </div>
+    <div class="lock" id="fragment-addfixed">
+        <div class="notify" style="display: flex; justify-content: center; flex-wrap: wrap; font-weight: 600; font-size: 15px; height: fit-content;">
+            <div style="width: 100%; height: max-content; display: flex; justify-content: center; align-items: center; margin-top: 5px; flex-wrap: wrap; border: 1px solid white; padding: 2px 2px;">
+                <p style="margin-right: 10px;">Fixed Rate:</p>
+                <input type="number" placeholder="rate...." id="fixed-ratee">
+                <button id="rate-save">Save</button>
+            </div>
+        </div>
+    </div>
+    <div class="lock" id="fragment-additem">
+        <div class="notify" style="display: flex; justify-content: center; flex-wrap: wrap; font-weight: 600; font-size: 15px; height: fit-content;">
+            <div style="width: 100%; height: max-content; display: flex; justify-content: center; align-items: center; margin-top: 5px; flex-wrap: wrap; border: 1px solid white; padding: 2px 2px;">
+                <p style="margin-right: 10px; width: 100%; text-align: center;">ADD ITEM:</p>
+                <input type="text" placeholder="Item Name...." id="item-name" class="x">
+                <textarea placeholder="Item Details...." id="item-text" style="min-height: 50px;" class="x"></textarea>
+                <p>Add Photo: </p>
+                <input type="file" id="img11">
+                <button id="item-save" class="x">Save</button>
+                <button class="x" style="float: left;" onclick="closeAlert('fragment-additem')">Close</button>
+            </div>
+        </div>
+    </div>
+    <div class="loader" id="loader"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="jquery.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyB5uncoWCHeu89Ji5XvLEa0av2xrPkV5ws",
+            authDomain: "my-meal-279205.firebaseapp.com",
+            databaseURL: "https://my-meal-279205.firebaseio.com",
+            projectId: "my-meal-279205",
+            storageBucket: "my-meal-279205.appspot.com",
+            messagingSenderId: "985824660370",
+            appId: "1:985824660370:web:590dfac2677ea951544f4b",
+            measurementId: "G-WCSE8L66KW"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="index.js"></script>
+    <script src="style.js"></script>
+    <script>
+        function jump(e, autoMove, self) {
+            document.getElementById(self).style.background = 'white';
+            try {
+                if (e.keyCode == 13) {
+                    document.getElementById(autoMove).focus();
+
+                }
+            } catch (error) {
+
+            }
+
+        }
+    </script>
+</body>
+
+</html>
