@@ -23,6 +23,7 @@
                 <input type="email" id="email" placeholder="Email" onkeydown="jump(event,'password','email')">
                 <input type="password" id="password" placeholder="Password" onkeydown="jump(event,'submit','password')">
                 <input type="submit" style="height: 25px; margin-top: 25px;" value="Login" id="submit">
+                <input type="submit" style="height: 25px; margin-top: 25px;" value="Forget Password" onclick="gotoForgetPassword()">
                 <input type="submit" style="height: 25px; margin-top: 25px;" value="SignUp" onclick="gotoSignUp()">
                 <br>
                 <br>
@@ -186,6 +187,16 @@
                 display: none;
             }
         </style>
+    </div>
+    <div class="box1" id="forget-area">
+        <div class="b2" style="min-height: fit-content;">
+            <h5>Password reset email will sent to your email address
+                <h4>
+                    <h3>Forget Password</h3>
+                    <input type="email" id="forget-email" placeholder="Email....">
+                    <input type="submit" style="height: 25px; margin-top: 15px;" value="Send" id="submit11">
+                    <input type="submit" style="height: 25px; margin-top: 15px; margin-bottom: 15px;" value="Back" onclick="Back2()">
+        </div>
     </div>
     <div class="box1" id="signup-area">
         <div class="b2" style="min-height: fit-content;">

@@ -28,6 +28,15 @@ function gotoSignUp() {
     document.getElementById('signup-area').style.display = 'flex';
     document.getElementById('regester-area').style.display = 'none';
     document.getElementById('product-area').style.display = 'none';
+    document.getElementById('forget-area').style.display = 'none'
+}
+
+function gotoForgetPassword() {
+    document.getElementById('login-area').style.display = 'none';
+    document.getElementById('signup-area').style.display = 'none';
+    document.getElementById('regester-area').style.display = 'none';
+    document.getElementById('product-area').style.display = 'none';
+    document.getElementById('forget-area').style.display = 'flex'
 }
 
 function gotoCreateMess() {
@@ -35,6 +44,7 @@ function gotoCreateMess() {
     document.getElementById('signup-area').style.display = 'none';
     document.getElementById('regester-area').style.display = 'flex';
     document.getElementById('product-area').style.display = 'none';
+    document.getElementById('forget-area').style.display = 'none'
 }
 
 function Back1() {
@@ -163,12 +173,12 @@ function Setting() {
 
 function MealFragment(data) {
     document.getElementById('fragment-meal').style.display = 'flex';
-    if(data=='meal'){
-        document.getElementById('save-credit').style.display='initial';
-        document.getElementById('save-home-credit').style.display='none';
-    }else{
-        document.getElementById('save-credit').style.display='none';
-        document.getElementById('save-home-credit').style.display='initial';
+    if (data == 'meal') {
+        document.getElementById('save-credit').style.display = 'initial';
+        document.getElementById('save-home-credit').style.display = 'none';
+    } else {
+        document.getElementById('save-credit').style.display = 'none';
+        document.getElementById('save-home-credit').style.display = 'initial';
     }
 }
 
