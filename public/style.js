@@ -161,8 +161,15 @@ function Setting() {
     SettingsBtn.style.borderBottom = '1px solid yellow';
 }
 
-function MealFragment() {
+function MealFragment(data) {
     document.getElementById('fragment-meal').style.display = 'flex';
+    if(data=='meal'){
+        document.getElementById('save-credit').style.display='initial';
+        document.getElementById('save-home-credit').style.display='none';
+    }else{
+        document.getElementById('save-credit').style.display='none';
+        document.getElementById('save-home-credit').style.display='initial';
+    }
 }
 
 function addGuest() {

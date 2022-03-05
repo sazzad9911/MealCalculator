@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAFA Food</title>
+    <title>SAFTA Food Portal</title>
     <link rel="icon" href="image/logo.png" type="image/gif" sizes="16x16">
     <link rel="stylesheet" type="text/css" href="index.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous" />
@@ -26,7 +26,7 @@
                 <input type="submit" style="height: 25px; margin-top: 25px;" value="SignUp" onclick="gotoSignUp()">
                 <br>
                 <br>
-                <a href="meal-calculator.apk" style="color: white;">Download Mobile App</a>
+                <a href="myhostel.apk" style="color: white;">Download Mobile App</a>
         </div>
     </div>
     <div class="box1" id="product-area">
@@ -278,7 +278,7 @@
                 </div>
                 <div class="c3" id="addmeal" style="flex-wrap: wrap; justify-content: center;">
                     <p style="font-weight: 800; ">Meal Options</p>
-                    <button class="reset" onclick="MealFragment()"><i class="fas fa-plus"></i> Add Credit</button>
+                    <button class="reset" onclick="MealFragment('meal')"><i class="fas fa-plus"></i> Add Credit</button>
                     <div class="bx1">
                         <h4 id="addmeal-people" style="width: 100%;"></h4>
                         <input type="number" class="x" placeholder="Todays Cost" id="todays-cost">
@@ -289,7 +289,7 @@
                     </div>
                 </div>
                 <div class="c3" id="addbill">
-                    <p style="font-weight: 800; text-align: center;">wait for something awessome!</p>
+                    <button class="reset" onclick="MealFragment('home')"><i class="fas fa-plus"></i> Add Home Credit</button>
                 </div>
                 <div class="c3" id="settings">
                     <p style="font-weight: 800; text-align: center;">Meal Calculation Settings</p>
@@ -546,9 +546,8 @@
                 <i class="fas fa-plus-circle fa-2x"></i>
                 <p>Add New Event</p>
             </div>
-            <div class="container" style="overflow-y: scroll;">
+            <div class="sub-container">
                 <p id="event-st" style="margin: 0;"></p>
-
             </div>
             <style>
                 .event-box {
@@ -659,7 +658,8 @@
             <select class="x" id="credit-person">
                 <option id="option-credit" value="none">None</option>
             </select>
-            <button class="x" style="float: right;" id="save-credit">Save</button>
+            <button class="x" style="float: right;" id="save-credit">Save Meal Credit</button>
+            <button class="x" style="float: right;" id="save-home-credit">Save Home Credit</button>
             <button class="x" style="float: left;" onclick="closeAlert('fragment-meal')">Close</button>
         </div>
     </div>
@@ -752,6 +752,16 @@
         </div>
     </div>
     <div class="loader" id="loader"></div>
+    <div class="lock" id="fragment-notice">
+        <div class="notify" style="display: flex; justify-content: center; flex-wrap: wrap; font-weight: 600; font-size: 15px; height: fit-content;">
+            <div style="width: 100%; height: max-content; display: flex; justify-content: center; align-items: center; margin-top: 5px; flex-wrap: wrap; border: 1px solid white; padding: 2px 2px;">
+                <p style="margin: 10px; width: 100%; text-align: center;">NOTICE:</p>
+                <p style='margin:5px;' id='notice-message'></p>
+                <button id="save-notice" class="x">Okey</button>
+                <button class="x" style="float: left;" onclick="closeAlert('fragment-notice')">Close</button>
+            </div>
+        </div>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="jquery.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
